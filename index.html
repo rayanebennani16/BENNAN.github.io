@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayane Bennani | Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0b1120;
+  color: white;
+}
+
+header {
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+}
+
+.logo {
+  color: #38bdf8;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+nav a:hover { color: #38bdf8; }
+
+section {
+  padding: 80px 10%;
+}
+
+.hero {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hero h1 span { color: #38bdf8; }
+
+.hero p {
+  color: #b8c4d6;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 13px 25px;
+  background: #0284c7;
+  color: white;
+  text-decoration: none;
+  border-radius: 7px;
+  width: fit-content;
+}
+
+h2 {
+  color: #38bdf8;
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.about, .skills, .projects {
+  background: #111827;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+p { line-height: 1.8; color: #cbd5e1; }
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills-list span {
+  background: #1e293b;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: #38bdf8;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.project h3 { margin-bottom: 12px; }
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #111827;
+  color: #94a3b8;
+}
+
+@media(max-width: 650px) {
+  header { flex-direction: column; gap: 20px; }
+  nav a { margin: 7px; font-size: 13px; }
+  .hero h1 { font-size: 34px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">RAYANE.</div>
+  <nav>
+    <a href="#home">Accueil</a>
+    <a href="#about">À propos</a>
+    <a href="#skills">Compétences</a>
+    <a href="#projects">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Bonjour, je suis <span>Rayane Bennani</span></h1>
+  <p>
+    Étudiant en ingénierie informatique à l'EMSI.<br>
+    Passionné par l'informatique, les réseaux et la cybersécurité.
+  </p>
+  <a href="#projects" class="btn">Découvrir mes projets</a>
+</section>
+
+<section id="about">
+  <div class="about">
+    <h2>À propos de moi</h2>
+    <p>
+      Je suis étudiant en ingénierie informatique.
+      Je développe mes compétences en programmation,
+      systèmes informatiques et réseaux.
+      Mon objectif est de me spécialiser dans
+      le domaine de la cybersécurité.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="skills">
+    <h2>Mes compétences</h2>
+    <div class="skills-list">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+      <span>C / C++</span>
+      <span>Linux</span>
+      <span>Réseaux informatiques</span>
+      <span>Git & GitHub</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Mes projets</h2>
+  <div class="project-grid">
+
+    <div class="project">
+      <h3>Projet C / C++</h3>
+      <p>Mes exercices et applications en programmation.</p>
+    </div>
+
+    <div class="project">
+      <h3>Projet JavaScript</h3>
+      <p>Mes réalisations en développement web.</p>
+    </div>
+
+    <div class="project">
+      <h3>Réseaux & Linux</h3>
+      <p>Mes travaux pratiques et apprentissages en systèmes et réseaux.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Me contacter</h2>
+  <p>Email : Ton adresse email</p>
+  <p>LinkedIn : Ton lien LinkedIn</p>
+  <p>GitHub : github.com/rayanebennani16</p>
+</section>
+
+<footer>
+  © 2026 Rayane Bennani - Tous droits réservés.
+</footer>
+
+</body>
+</html>
