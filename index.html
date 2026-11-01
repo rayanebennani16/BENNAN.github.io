@@ -3,9 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rayane Bennani | Portfolio</title>
+<meta name="description" content="Portfolio de Rayane Bennani, étudiant ingénieur en informatique, passionné de développement et de cybersécurité.">
+<title>RB — Rayane Bennani | Portfolio</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #09090f;
+  --surface: #11111b;
+  --text: #f5f3ff;
+  --muted: #a3a3b8;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --cyan: #67e8f9;
+  --line: rgba(255,255,255,.09);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,121 +28,517 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #0b1120;
-  color: white;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  top: -200px;
+  left: -150px;
+  background: #7c3aed;
+  filter: blur(180px);
+  opacity: .13;
+  pointer-events: none;
+  z-index: -1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, 88%);
+  margin: auto;
+}
+
+/* NAVIGATION */
+
 header {
-  padding: 25px 8%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(9,9,15,.83);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+
+nav {
+  min-height: 78px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111827;
 }
 
 .logo {
-  color: #38bdf8;
-  font-size: 23px;
-  font-weight: bold;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -2px;
 }
 
-nav a {
+.logo span { color: var(--purple); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.nav-links a:hover { color: var(--cyan); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
   color: white;
-  text-decoration: none;
-  margin-left: 20px;
+  font-size: 26px;
+  cursor: pointer;
 }
 
-nav a:hover { color: #38bdf8; }
-
-section {
-  padding: 80px 10%;
-}
+/* HERO */
 
 .hero {
-  min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-height: 690px;
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  align-items: center;
+  gap: 35px;
+  padding: 90px 0;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-bottom: 15px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(42px, 6vw, 75px);
+  line-height: 1.08;
+  letter-spacing: -4px;
 }
 
-.hero h1 span { color: #38bdf8; }
+.gradient {
+  background: linear-gradient(110deg, #a78bfa, #f472b6, #67e8f9);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 5s ease infinite;
+}
 
-.hero p {
-  color: #b8c4d6;
-  font-size: 19px;
-  line-height: 1.7;
+@keyframes gradient {
+  0%,100% { background-position: 0%; }
+  50% { background-position: 100%; }
+}
+
+.hero-desc {
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 540px;
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 32px;
 }
 
 .btn {
+  padding: 14px 23px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .3s;
   display: inline-block;
-  margin-top: 25px;
-  padding: 13px 25px;
-  background: #0284c7;
+}
+
+.btn-primary {
+  color: #09090f;
+  background: linear-gradient(110deg,#a78bfa,#67e8f9);
+}
+
+.btn-secondary {
+  border: 1px solid var(--line);
   color: white;
-  text-decoration: none;
-  border-radius: 7px;
-  width: fit-content;
 }
 
-h2 {
-  color: #38bdf8;
-  margin-bottom: 25px;
-  font-size: 30px;
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px #a78bfa33;
 }
 
-.about, .skills, .projects {
-  background: #111827;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  padding: 30px;
+.available {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 35px;
+  font-size: 12px;
+  color: var(--muted);
 }
 
-p { line-height: 1.8; color: #cbd5e1; }
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #4ade80;
+}
 
-.skills-list {
+/* INITIALS */
+
+.visual {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.skills-list span {
-  background: #1e293b;
-  padding: 12px 18px;
-  border-radius: 6px;
-  color: #38bdf8;
+.orbit {
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(167,139,250,.35);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: float 5s ease-in-out infinite;
 }
 
-.project-grid {
+.orbit::before, .orbit::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(244,114,182,.25);
+  border-radius: 50%;
+}
+
+.orbit::before { inset: 20px; }
+.orbit::after { inset: -20px; }
+
+.rb {
+  width: 205px;
+  height: 205px;
+  border-radius: 45px;
+  transform: rotate(-8deg);
+  background: linear-gradient(145deg,#a78bfa,#6d28d9,#ec4899);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 85px;
+  font-weight: 800;
+  letter-spacing: -10px;
+  box-shadow: 0 0 90px #a78bfa55;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.tag {
+  position: absolute;
+  padding: 10px 15px;
+  background: #181824;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 11px;
+  color: var(--cyan);
+}
+
+.tag-one { top: 15px; right: -15px; }
+.tag-two { bottom: 20px; left: -20px; }
+
+/* SECTIONS */
+
+section {
+  padding: 90px 0;
+}
+
+.section-label {
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px,4vw,45px);
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 620px;
+  font-size: 14px;
+}
+
+/* ABOUT */
+
+.about-box {
+  margin-top: 35px;
+  background: linear-gradient(135deg,#171323,#10131e);
+  border: 1px solid var(--line);
+  padding: 35px;
+  border-radius: 18px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* SKILLS */
+
+.skills-grid {
+  margin-top: 35px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3,1fr);
+  gap: 17px;
 }
 
-.project {
-  background: #1e293b;
+.skill-card {
+  background: var(--surface);
   padding: 25px;
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  transition: .3s;
 }
 
-.project h3 { margin-bottom: 12px; }
+.skill-card:hover {
+  border-color: var(--purple);
+  transform: translateY(-6px);
+}
+
+.skill-card .icon {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.skill-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* PROJECTS */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--purple);
+}
+
+.project-top {
+  height: 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+  background: linear-gradient(135deg,#31205b,#171b39,#123449);
+}
+
+.project-info { padding: 25px; }
+
+.project-info h3 { margin-bottom: 10px; }
+
+.project-info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.project-tags span {
+  color: var(--cyan);
+  background: #67e8f911;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+/* EDUCATION */
+
+.timeline {
+  border-left: 1px solid #a78bfa66;
+  margin: 35px 0 0 8px;
+  padding-left: 28px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--purple);
+  border-radius: 50%;
+  left: -34px;
+  top: 5px;
+  box-shadow: 0 0 15px var(--purple);
+}
+
+.timeline-item h3 { font-size: 17px; }
+.timeline-item p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+/* CONTACT */
+
+.contact-box {
+  background: linear-gradient(120deg,#241744,#142b3b);
+  border: 1px solid #a78bfa44;
+  border-radius: 20px;
+  padding: 55px 30px;
+  text-align: center;
+}
+
+.contact-box .section-title { margin-bottom: 15px; }
+
+.contact-box p {
+  color: #c4bfd8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.contact-links a {
+  padding: 12px 19px;
+  background: #ffffff12;
+  border: 1px solid #ffffff22;
+  border-radius: 7px;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.contact-links a:hover {
+  background: #a78bfa33;
+  border-color: var(--purple);
+}
 
 footer {
+  border-top: 1px solid var(--line);
   text-align: center;
   padding: 30px;
-  background: #111827;
-  color: #94a3b8;
+  color: var(--muted);
+  font-size: 12px;
 }
 
-@media(max-width: 650px) {
-  header { flex-direction: column; gap: 20px; }
-  nav a { margin: 7px; font-size: 13px; }
-  .hero h1 { font-size: 34px; }
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 750px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 70px;
+    padding-top: 75px;
+  }
+
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .buttons, .available { justify-content: center; }
+  .visual { margin: 15px 0 30px; }
+  .orbit { width: 250px; height: 250px; }
+  .rb { width: 160px; height: 160px; font-size: 65px; }
+
+  .skills-grid { grid-template-columns: repeat(2,1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 100%;
+    background: #11111b;
+    padding: 25px;
+    flex-direction: column;
+    text-align: center;
+    gap: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.active { display: flex; }
+  .menu-btn { display: block; }
+}
+
+@media(max-width: 430px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero h1 { letter-spacing: -2px; }
 }
 </style>
 </head>
@@ -136,85 +546,267 @@ footer {
 <body>
 
 <header>
-  <div class="logo">RAYANE.</div>
-  <nav>
-    <a href="#home">Accueil</a>
-    <a href="#about">À propos</a>
-    <a href="#skills">Compétences</a>
-    <a href="#projects">Projets</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">RB<span>.</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#education">Formation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<section class="hero" id="home">
-  <h1>Bonjour, je suis <span>Rayane Bennani</span></h1>
-  <p>
-    Étudiant en ingénierie informatique à l'EMSI.<br>
-    Passionné par l'informatique, les réseaux et la cybersécurité.
-  </p>
-  <a href="#projects" class="btn">Découvrir mes projets</a>
+<main>
+
+<section class="container hero" id="home">
+
+  <div>
+    <div class="eyebrow">✦ Portfolio personnel · 2026</div>
+
+    <h1>
+      Hello, je suis<br>
+      <span class="gradient">Rayane Bennani.</span>
+    </h1>
+
+    <p class="hero-desc">
+      Étudiant en ingénierie informatique à l'EMSI.
+      Passionné par le développement, les nouvelles technologies,
+      les systèmes et la cybersécurité.
+      Je construis mes compétences projet après projet.
+    </p>
+
+    <div class="buttons">
+      <a href="#projects" class="btn btn-primary">Explorer mes projets ↗</a>
+      <a href="#contact" class="btn btn-secondary">Me contacter</a>
+    </div>
+
+    <div class="available">
+      <span class="dot"></span>
+      Ouvert aux opportunités de stage
+    </div>
+  </div>
+
+  <div class="visual">
+    <div class="orbit">
+      <div class="rb">RB</div>
+    </div>
+    <div class="tag tag-one">Creative Developer</div>
+    <div class="tag tag-two">IT Engineering</div>
+  </div>
+
 </section>
 
 <section id="about">
-  <div class="about">
-    <h2>À propos de moi</h2>
-    <p>
-      Je suis étudiant en ingénierie informatique.
-      Je développe mes compétences en programmation,
-      systèmes informatiques et réseaux.
-      Mon objectif est de me spécialiser dans
-      le domaine de la cybersécurité.
+  <div class="container reveal">
+    <div class="section-label">01 / À propos</div>
+    <h2 class="section-title">Qui suis-je ?</h2>
+    <p class="section-desc">
+      Curieux, motivé et toujours prêt à apprendre.
+      Je cherche à développer mes compétences techniques
+      à travers la pratique et des projets concrets.
     </p>
+
+    <div class="about-box">
+      Je m'appelle <strong>Rayane Bennani</strong>, étudiant en cycle
+      ingénieur en informatique à l'EMSI.
+      Je m'intéresse particulièrement au développement informatique,
+      aux réseaux et à la cybersécurité.
+      Mon objectif est de construire une carrière dans les technologies
+      de l'information et de relever de nouveaux défis techniques.
+    </div>
   </div>
 </section>
 
 <section id="skills">
-  <div class="skills">
-    <h2>Mes compétences</h2>
-    <div class="skills-list">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>C / C++</span>
-      <span>Linux</span>
-      <span>Réseaux informatiques</span>
-      <span>Git & GitHub</span>
+  <div class="container reveal">
+    <div class="section-label">02 / Expertise</div>
+    <h2 class="section-title">Mes compétences</h2>
+    <p class="section-desc">
+      Les technologies et domaines que j'étudie et pratique.
+    </p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="icon">💻</div>
+        <h3>Programmation</h3>
+        <p>C, C++, JavaScript et développement des bases logicielles.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">🌐</div>
+        <h3>Développement Web</h3>
+        <p>HTML, CSS, JavaScript et conception d'interfaces web.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">🐧</div>
+        <h3>Systèmes Linux</h3>
+        <p>Commandes Linux, terminal et administration de base.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">🔗</div>
+        <h3>Réseaux</h3>
+        <p>Notions de réseaux informatiques et protocoles.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">🔐</div>
+        <h3>Cybersécurité</h3>
+        <p>Intérêt pour la sécurité informatique et la protection des systèmes.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">⚙️</div>
+        <h3>Outils</h3>
+        <p>Git, GitHub et environnement de développement.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Mes projets</h2>
-  <div class="project-grid">
+  <div class="container reveal">
+    <div class="section-label">03 / Réalisations</div>
+    <h2 class="section-title">Mes projets<span class="gradient">.</span></h2>
+    <p class="section-desc">
+      Une sélection de mes travaux et réalisations.
+      Cette section sera enrichie au fil de mon parcours.
+    </p>
 
-    <div class="project">
-      <h3>Projet C / C++</h3>
-      <p>Mes exercices et applications en programmation.</p>
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-top">⌨️</div>
+        <div class="project-info">
+          <h3>Programmation C / C++</h3>
+          <p>Exercices et applications pour développer mes compétences en programmation et en logique algorithmique.</p>
+          <div class="project-tags">
+            <span>C</span><span>C++</span><span>Algorithmique</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">🌍</div>
+        <div class="project-info">
+          <h3>Portfolio personnel</h3>
+          <p>Création de mon propre site web pour présenter mon parcours, mes compétences et mes réalisations.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">🐧</div>
+        <div class="project-info">
+          <h3>Linux & Systèmes</h3>
+          <p>Travaux pratiques pour apprendre à utiliser le terminal Linux et les commandes système.</p>
+          <div class="project-tags">
+            <span>Linux</span><span>Terminal</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">🔐</div>
+        <div class="project-info">
+          <h3>Exploration cybersécurité</h3>
+          <p>Apprentissage des fondamentaux de la sécurité informatique et des réseaux.</p>
+          <div class="project-tags">
+            <span>Cybersecurity</span><span>Networking</span>
+          </div>
+        </div>
+      </article>
+
     </div>
+  </div>
+</section>
 
-    <div class="project">
-      <h3>Projet JavaScript</h3>
-      <p>Mes réalisations en développement web.</p>
+<section id="education">
+  <div class="container reveal">
+    <div class="section-label">04 / Parcours</div>
+    <h2 class="section-title">Formation</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Cycle ingénieur en informatique</h3>
+        <p>EMSI — École Marocaine des Sciences de l'Ingénieur<br>
+        Formation en informatique, programmation et systèmes.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Objectif professionnel</h3>
+        <p>Développer une expertise en informatique,
+        réseaux et cybersécurité.</p>
+      </div>
     </div>
-
-    <div class="project">
-      <h3>Réseaux & Linux</h3>
-      <p>Mes travaux pratiques et apprentissages en systèmes et réseaux.</p>
-    </div>
-
   </div>
 </section>
 
 <section id="contact">
-  <h2>Me contacter</h2>
-  <p>Email : Ton adresse email</p>
-  <p>LinkedIn : Ton lien LinkedIn</p>
-  <p>GitHub : github.com/rayanebennani16</p>
+  <div class="container reveal">
+    <div class="contact-box">
+      <div class="section-label">05 / Contact</div>
+      <h2 class="section-title">Travaillons ensemble.</h2>
+      <p>
+        Intéressé par mon profil ?<br>
+        N'hésitez pas à me contacter pour échanger
+        sur des projets ou des opportunités de stage.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:TON_EMAIL@gmail.com">✉ Email</a>
+        <a href="https://github.com/rayanebennani16" target="_blank" rel="noopener">⌘ GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+    </div>
+  </div>
 </section>
 
+</main>
+
 <footer>
-  © 2026 Rayane Bennani - Tous droits réservés.
+  © 2026 Rayane Bennani · Designed with passion.
 </footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
 
 </body>
 </html>
